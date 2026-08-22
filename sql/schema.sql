@@ -1,0 +1,17 @@
+CREATE DATABASE IF NOT EXISTS resume_db
+    CHARACTER SET utf8mb4
+    COLLATE utf8mb4_0900_ai_ci;
+
+USE resume_db;
+
+CREATE TABLE IF NOT EXISTS resumes (
+    id INT NOT NULL AUTO_INCREMENT,
+    original_filename VARCHAR(255) NOT NULL,
+    stored_filename VARCHAR(255) NOT NULL,
+    pdf_path VARCHAR(500) NOT NULL,
+    uploaded_at TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+    raw_text LONGTEXT NOT NULL,
+    PRIMARY KEY (id)
+) ENGINE=InnoDB
+  DEFAULT CHARSET=utf8mb4
+  COLLATE=utf8mb4_0900_ai_ci;
