@@ -1,0 +1,85 @@
+/* Semantic Résumé Search — project styling on the shared UI system. */
+:root { --accent-h: 296; --accent-s: 72%; --accent-l: 58%; }
+
+.conn {
+  display: flex; align-items: center; gap: 8px;
+  font-size: .78rem; color: var(--text-muted);
+  padding: 7px 10px; border-radius: var(--radius-sm); background: var(--surface-2);
+}
+.conn .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--text-dim); flex: 0 0 7px; }
+.conn.online .dot { background: var(--ok); box-shadow: 0 0 0 3px var(--ok-soft); }
+.conn.offline .dot { background: var(--danger); box-shadow: 0 0 0 3px var(--danger-soft); }
+
+.search-form { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.search-form .search-input { flex: 1 1 340px; }
+.inline-field { flex-direction: row; align-items: center; gap: 8px; }
+.inline-field span { font-size: .8rem; color: var(--text-muted); white-space: nowrap; }
+.inline-field .select { width: auto; }
+
+.chip-row { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 12px; }
+.chip {
+  border: 1px solid var(--border); background: var(--surface-2);
+  color: var(--text-muted); border-radius: 99px;
+  padding: 5px 13px; font-size: .8rem; cursor: pointer;
+  transition: border-color .15s, color .15s, background .15s;
+}
+.chip:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-soft); }
+
+.hit {
+  display: flex; align-items: center; gap: 15px;
+  padding: 15px 18px; border-bottom: 1px solid var(--border);
+  transition: background .12s;
+}
+.hit:last-child { border-bottom: none; }
+.hit:hover { background: var(--surface-2); }
+
+.hit-rank {
+  width: 30px; height: 30px; flex: 0 0 30px; border-radius: 9px;
+  display: grid; place-items: center; font-size: .78rem; font-weight: 700;
+  background: var(--accent-soft); color: var(--accent);
+}
+.hit-body { flex: 1; min-width: 0; }
+.hit-name { font-size: .92rem; font-weight: 590; margin-bottom: 3px; }
+.hit-path { font-size: .76rem; color: var(--text-dim); font-family: var(--mono); }
+
+.hit-score { flex: 0 0 132px; text-align: right; }
+.hit-pct {
+  font-size: 1.15rem; font-weight: 680; letter-spacing: -.02em;
+  font-variant-numeric: tabular-nums; color: var(--accent);
+}
+.hit-label { font-size: .68rem; text-transform: uppercase; letter-spacing: .07em; color: var(--text-dim); font-weight: 620; }
+.hit-score .meter { margin-top: 6px; }
+
+.steps { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 9px; font-size: .87rem; color: var(--text-muted); }
+.steps li::marker { color: var(--accent); font-weight: 700; }
+.steps b { color: var(--text); font-weight: 620; }
+
+.compare {
+  padding: 14px 16px; border-radius: var(--radius);
+  border: 1px solid var(--border); background: var(--bg-elev);
+}
+.compare-q {
+  font-family: var(--mono); font-size: .8rem; color: var(--accent);
+  margin-bottom: 9px; padding-bottom: 9px; border-bottom: 1px dashed var(--border);
+}
+.compare-a { font-size: .84rem; color: var(--text-muted); line-height: 1.6; }
+.compare-a b { color: var(--text); font-weight: 600; }
+
+.session-row {
+  display: flex; align-items: center; gap: 12px;
+  padding: 12px 18px; border-bottom: 1px solid var(--border);
+}
+.session-row:last-child { border-bottom: none; }
+
+.extract {
+  background: var(--bg-elev); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 14px 16px;
+  font-size: .84rem; line-height: 1.72; color: var(--text-muted);
+  max-height: 340px; overflow-y: auto; white-space: pre-wrap; word-break: break-word;
+}
+
+@media (max-width: 620px) {
+  .search-form { flex-direction: column; align-items: stretch; }
+  .hit { flex-wrap: wrap; }
+  .hit-score { flex: 1 1 100%; text-align: left; }
+}
